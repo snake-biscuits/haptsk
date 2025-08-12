@@ -1,0 +1,39 @@
+body {
+  font-family: sans-serif;
+
+  margin-top: 6pt;
+  margin-left: 24pt;
+  margin-right: 24pt;
+  margin-bottom: 12pt;
+
+  background-color: #333;
+}
+
+header {
+  text-align: center;
+  color: #444;
+}
+
+h1 { color: #CCC; }
+p  { color: #BBB; }
+
+.inputs {
+  display: grid;
+  gap: 2%;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.inputs > div {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16/9;
+  border-radius: 2rem;
+  padding: 0.25rem;
+
+  background-color: #A98;
+}
+
+.ds4 > svg > circle { stroke-width: 2; stroke: #555; }
+.ds4 > svg > rect   { stroke-width: 2; stroke: #555; }
+.ds4 > svg > .bg    { fill: #444; }

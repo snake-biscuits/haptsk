@@ -1,0 +1,31 @@
+<?xml version="1.0" standalone="no"?>
+<svg width="200" height="128" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <rect class="led" x="64" y="8" width="72" height="8" rx="2" ry="2" fill="#333"/>
+  <!-- l1, l2 -->
+  <rect class="but6" x="20" y="2" width="40" height="4"  rx="2" ry="2" fill="#333"/>
+  <rect class="but4" x="20" y="8" width="40" height="12" rx="2" ry="2" fill="#333"/>
+  <!-- dpad-->
+  <circle class="bg" cx="40" cy="36" r="24"/>
+  <rect class="but12" x="35" y="18" width="10" height="12" rx="2" ry="2" fill="#333"/>
+  <rect class="but13" x="35" y="42" width="10" height="12" rx="2" ry="2" fill="#333"/>
+  <rect class="but14" x="22" y="31" width="12" height="10" rx="2" ry="2" fill="#333"/>
+  <rect class="but15" x="46" y="31" width="12" height="10" rx="2" ry="2" fill="#333"/>
+  <!-- r1, r2 -->
+  <rect class="but7" x="140" y="2" width="40" height="4"  rx="2" ry="2" fill="#333"/>
+  <rect class="but5" x="140" y="8" width="40" height="12" rx="2" ry="2" fill="#333"/>
+  <!-- face buttons -->
+  <circle class="bg" cx="160" cy="36" r="24"/>
+  <circle class="but0" cx="160" cy="48" r="6" fill="#333"/> <!-- cross -->
+  <circle class="but1" cx="172" cy="36" r="6" fill="#333"/> <!-- circle -->
+  <circle class="but2" cx="148" cy="36" r="6" fill="#333"/> <!-- square -->
+  <circle class="but3" cx="160" cy="24" r="6" fill="#333"/> <!-- triangle -->
+  <!-- sticks -->
+  <circle class="bg" cx="72" cy="64" r="18"/>
+  <circle class="bg" cx="128" cy="64" r="18"/>
+  <g class="lstick"><circle class="but10" cx="72"  cy="64" r="8" fill="#333"/></g>
+  <g class="rstick"><circle class="but11" cx="128" cy="64" r="8" fill="#333"/></g>
+  <!-- share, options, PS -->
+  <rect class="but8" x="70"  y="12" width="4" height="10" rx="2" ry="2" fill="#333"/>
+  <rect class="but9" x="124" y="12" width="4" height="10" rx="2" ry="2" fill="#333"/>
+  <circle class="but16" cx="100" cy="70" r="4" fill="#333"/>
+</svg>

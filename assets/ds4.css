@@ -1,0 +1,11 @@
+circle {
+  stroke-width: 2;
+  stroke: #555;
+}
+
+rect {
+  stroke-width: 2;
+  stroke: #555;
+}
+
+.bg { fill: #444; }

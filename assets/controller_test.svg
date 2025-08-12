@@ -1,0 +1,87 @@
+<?xml version="1.0" standalone="no"?>
+<svg width="200" height="128" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <script type="application/javascript">
+    window.addEventListener("gamepadconnected", (e) => {
+      console.log(
+        "Gamepad #%d connected | %s | %d buttons | %d axes",
+        e.gamepad.index, e.gamepad.id,
+        e.gamepad.buttons.length, e.gamepad.axes.length);
+      document.getElementById("led").setAttribute("fill", "#3F3");
+      });
+
+    function update() {
+      var gamepads = navigator.getGamepads()
+      /* TODO: identify gamepad by id string */
+      if (gamepads.length != 0) {
+        var gamepad = gamepads[0]  /* 6 axes, 17 buttons */
+        var scale = 16;
+
+        var lstick = document.getElementById("lstick");
+        var lx = scale * gamepad.axes[0];
+        var ly = scale * gamepad.axes[1];
+        lstick.setAttribute("transform", `translate(${lx} ${ly})`);
+
+        var rstick = document.getElementById("rstick");
+        var rx = scale * gamepad.axes[2];
+        var ry = scale * gamepad.axes[3];
+        rstick.setAttribute("transform", `translate(${rx} ${ry})`);
+
+        /* NOTE: axis 4 and 5 are triggers (-1 to +1) */
+        /* NOTE: can't use lt or gt symbol inside script tag */
+        var i = 0; var on = "#48D"; var off = "#333";
+        while (i != 17) {
+          var button = gamepad.buttons[i];
+          var led = document.getElementById(`but${i}`);
+          led.setAttribute("fill", button.pressed ? on : off);
+          i++;
+        }
+      }
+      requestAnimationFrame(update);
+    }
+
+    requestAnimationFrame(update);
+  </script>
+  <style>
+    circle {
+      stroke-width: 2;
+      stroke: #555;
+    }
+
+    rect {
+      stroke-width: 2;
+      stroke: #555;
+    }
+
+    .bg { fill: #444; }
+  </style>
+  <rect id="led" x="64" y="8" width="72" height="8" rx="2" ry="2" fill="#333"/>
+  <!-- face button circles -->
+  <!-- l1, l2 -->
+  <rect id="but6" x="20" y="2" width="40" height="4"  rx="2" ry="2" fill="#333"/>
+  <rect id="but4" x="20" y="8" width="40" height="12" rx="2" ry="2" fill="#333"/>
+  <circle class="bg" cx="40" cy="36" r="24"/>
+  <!-- dpad-->
+  <rect id="but12" x="35" y="18" width="10" height="12" rx="2" ry="2" fill="#333"/>
+  <rect id="but13" x="35" y="42" width="10" height="12" rx="2" ry="2" fill="#333"/>
+  <rect id="but14" x="22" y="31" width="12" height="10" rx="2" ry="2" fill="#333"/>
+  <rect id="but15" x="46" y="31" width="12" height="10" rx="2" ry="2" fill="#333"/>
+  <!-- r1, r2 -->
+  <rect id="but7" x="140" y="2" width="40" height="4"  rx="2" ry="2" fill="#333"/>
+  <rect id="but5" x="140" y="8" width="40" height="12" rx="2" ry="2" fill="#333"/>
+  <circle class="bg" cx="160" cy="36" r="24"/>
+  <!-- face buttons -->
+  <circle id="but0" cx="160" cy="48" r="6" fill="#333"/> <!-- cross -->
+  <circle id="but1" cx="172" cy="36" r="6" fill="#333"/> <!-- circle -->
+  <circle id="but2" cx="148" cy="36" r="6" fill="#333"/> <!-- square -->
+  <circle id="but3" cx="160" cy="24" r="6" fill="#333"/> <!-- triangle -->
+  <!-- stick enclosures -->
+  <circle class="bg" cx="72" cy="64" r="18"/>
+  <circle class="bg" cx="128" cy="64" r="18"/>
+  <!-- sticks -->
+  <g id="lstick"><circle id="but10" cx="72"  cy="64" r="8" fill="#333"/></g>
+  <g id="rstick"><circle id="but11" cx="128" cy="64" r="8" fill="#333"/></g>
+  <!-- share, options, home -->
+  <rect id="but8" x="70"  y="12" width="4" height="10" rx="2" ry="2" fill="#333"/>
+  <rect id="but9" x="124" y="12" width="4" height="10" rx="2" ry="2" fill="#333"/>
+  <circle id="but16" cx="100" cy="70" r="4" fill="#333"/>
+</svg>
