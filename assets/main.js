@@ -33,6 +33,9 @@ window.addEventListener("gamepadconnected", (event_) => {
     gamepad.index, gamepad.id,
     gamepad.buttons.length, gamepad.axes.length);
 
+  var log = document.getElementById("log");
+  log.innerHTML += `${gamepad.id} | ${gamepad.buttons.length} buttons\n`
+
   var player_div = document.createElement("div");
   player_div.setAttribute("id", `p${gamepad.index}`)
   // TODO: add ui elements to div
