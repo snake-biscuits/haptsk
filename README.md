@@ -8,7 +8,20 @@
 Make a simple, standalone Virtual Keyboard that lets you type with a controller
 
 Each stick *hunts* with a **virtual finger**
-Tapping bumpers *pecks* at keys under each finger
+Tapping bumpers *pecks* at keys under each "finger"
+
+> Apparently the Steam Deck does something similar with touchpads
+
+
+## Development Progress
+ - [ ] Web Prototype (Python `socket`)
+   - [x] Controller Tester
+     - [x] Dual Shock 4 (PS4 Controller)
+   - [ ] Keyboard
+     - [ ] Layout
+     - [ ] Finger
+     - [ ] Hunt
+     - [ ] Peck
 
 
 ## Default Binds
