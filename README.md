@@ -1,6 +1,6 @@
 # HAPTSK
 
-**H*unt **A**nd **P**eck **T**win-**S**tick Keyboard
+**H**unt **A**nd **P**eck **T**win-**S**tick **K**eyboard
 
 
 ## The Plan
