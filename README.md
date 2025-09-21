@@ -1,6 +1,6 @@
-# HAPTSK
+# HaPTSK
 
-**H**unt **A**nd **P**eck **T**win-**S**tick **K**eyboard
+**H**unt **a**nd **P**eck **T**win-**S**tick **K**eyboard
 
 
 ## The Plan
