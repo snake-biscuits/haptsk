@@ -3,11 +3,9 @@ window.addEventListener("gamepadconnected", (e) => {
     "Gamepad #%d connected | %s | %d buttons | %d axes",
     e.gamepad.index, e.gamepad.id,
     e.gamepad.buttons.length, e.gamepad.axes.length);
-
   document.getElementById("led").setAttribute("fill", "#3F3");
-});
+  });
 
-// ds4
 function update() {
   var gamepads = navigator.getGamepads()
   /* TODO: identify gamepad by id string */
@@ -39,4 +37,3 @@ function update() {
 }
 
 requestAnimationFrame(update);
-

@@ -24,6 +24,7 @@ interface GamepadButton {
   pressed: boolean;
   value: float;  // [0..1] for analogue buttons
 }
+
 interface Gamepad {
   buttons: GamepadButton[];
   axes: float[];
@@ -166,6 +167,8 @@ interface Bind {
   // -- tap, hold, toggle, cycle (reverse order modifier?)
 }
 
+
+export { InputChord, InputEvent };
 
 // good default binds matter!
 // -- L2+S => Ctrl+Z; L2+T => Ctrl+Y

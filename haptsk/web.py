@@ -46,8 +46,8 @@ class Request:
         method, route, protocol = header_lines[0].split()
         assert protocol == "HTTP/1.1"
         header = dict([
-            line.split(": ")
-            for line in header_lines[0:-1]])
+            line.partition(": ")[::2]
+            for line in header_lines[1:-1]])
         return cls(method, route, header, body)
 
     @classmethod
@@ -68,7 +68,7 @@ class Client:
     socket: socket.socket
     address: AddressPair
     ip: str = property(lambda s: s.address[0])
-    port: str = property(lambda s: s.address[2])
+    port: str = property(lambda s: s.address[1])
 
     def __init__(self, socket_=None, address=("", 0)):
         self.socket = socket_
@@ -156,7 +156,7 @@ class Server:
     def serve_404(self, client: Client, route: str):
         """FileNotFound"""
         # TODO: if "/404" in self.static -> serve
-        client.serve([
+        client.send([
             "HTTP/1.1 404 Not Found",
             ""])
         print(f"! file not found '{route}'")
@@ -164,7 +164,7 @@ class Server:
     def serve_500(self, client: Client):
         """RuntimeError"""
         # TODO: if "/500" in self.static -> serve
-        client.serve([
+        client.send([
             "HTTP/1.1 500 Internal Server Error",
             ""])
         print("! server error")
@@ -172,7 +172,7 @@ class Server:
     def serve_501(self, client: Client):
         """NotImplementedError"""
         # TODO: if "/501" in self.static -> serve
-        client.serve([
+        client.send([
             "HTTP/1.1 501 Not Implemented",
             ""])
         print("! not implemented")
@@ -185,7 +185,7 @@ class Server:
             print(f"@ server is live: http://{self.ip}:{self.port}/")
             while True:
                 print("^ listening for a client")
-                client = server.accept()
+                client = Client(*server.accept())
                 print(f"= connected to {client}")
                 # TODO: respect "Connection: keep-alive"
                 # -- manage a list of clients
@@ -202,5 +202,22 @@ class Server:
 
 
 if __name__ == "__main__":
+    # TODO: "dev-mode" which dynamically reloads files when editted
+    # -- track the entire "./site/" tree w/ os.walk
+    # -- would need to KeepAlive to poke the browser
     server = Server("0.0.0.0", 8000)
+    server.static = {  # just cache everything
+        "/": (
+            "text/html",
+            open("./site/index.html").read()),
+        # TODO: favicon.ico
+        "/style.css": (
+            "text/css",
+            open("./site/style.css").read()),
+        "/assets/ds4.svg": (
+            "image/svg+xml",
+            open("./site/assets/ds4.svg").read()),
+        "/scripts/main.js": (
+            "application/javascript",
+            open("./site/scripts/main.js").read())}
     server.run()
