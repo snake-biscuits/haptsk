@@ -2,6 +2,8 @@
 
 **H**unt **a**nd **P**eck **T**win-**S**tick **K**eyboard
 
+> [!NOTE]
+> This repo has migrated to [Codeberg](https://codeberg.org/bikkie/haptsk) but will remain archived on GitHub
 
 ## The Plan
 
